@@ -4,9 +4,9 @@ import {
   View,
 } from 'react-native';
 
-import { Text } from './src/components/Text/Text';
-import { Button } from './src/components/Button/Button';
 import { ThemeProvider } from '@shopify/restyle';
+import { Button } from './src/components/Button/Button';
+import { Text } from './src/components/Text/Text';
 import { theme } from './src/theme/theme';
 
 
@@ -19,7 +19,10 @@ function App(): React.JSX.Element {
         <Text preset="headingLarge" italic>
           Coffstack
         </Text>
-        <Button title="Entrar" />
+
+        <Button title="Entrar" marginBottom="s12" />
+
+        <Button loading title="Loading" />
       </View>
     </SafeAreaView>
     </ThemeProvider>
