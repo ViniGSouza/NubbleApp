@@ -20,7 +20,7 @@ import {
 
 export const Box = createBox<Theme>();
 
-type BoxProps = React.ComponentProps<typeof Box>;
+export type BoxProps = React.ComponentProps<typeof Box>;
 
 export type TouchableOpacityBoxProps = BackgroundColorProps<Theme> &
   SpacingProps<Theme> &
