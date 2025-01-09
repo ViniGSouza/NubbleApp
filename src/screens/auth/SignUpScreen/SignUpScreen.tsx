@@ -1,9 +1,9 @@
 import React from 'react';
+import {Button} from '../../../components/Button/Button';
+import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
-import {Icon} from '../../../components/icon/Icon';
-import {Button} from '../../../components/Button/Button';
 
 export function SignUpScreen() {
   const submitForm = () => {
@@ -28,10 +28,9 @@ export function SignUpScreen() {
         boxProps={{mb: 's20'}}
       />
 
-      <TextInput
+      <PasswordInput
         label="Senha"
         placeholder="Digite sua senha"
-        RightComponent={<Icon name="eyeOn" color="gray2" />}
         boxProps={{marginBottom: 's48'}}
       />
 
