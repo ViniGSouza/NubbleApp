@@ -8,8 +8,6 @@ import {Button, FormTextInput, Screen, Text} from '@components';
 import {useResetNavigationSuccess} from '@hooks';
 import {RootStackParamList} from '@routes';
 
-
-
 import {
   forgotPasswordSchema,
   ForgotPasswordSchema,
@@ -20,6 +18,7 @@ type ScreenProps = NativeStackScreenProps<
   'ForgotPasswordScreen'
 >;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function ForgotPasswordScreen({navigation}: ScreenProps) {
   const {reset} = useResetNavigationSuccess();
   const {control, formState, handleSubmit} = useForm<ForgotPasswordSchema>({
