@@ -20,7 +20,7 @@ import {mapScreenToProps} from './mapScreenToProps';
 export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
   const {bottom} = useAppSafeArea();
   return (
-    <Box {...$boxWrapper} style={{paddingBottom: bottom, ...$shadowProps}}>
+    <Box {...$boxWrapper} style={[{paddingBottom: bottom}, $shadowProps]}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
@@ -55,7 +55,9 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
 
         return (
           <TouchableOpacityBox
+            key={route.name}
             {...$itemWrapper}
+            accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarButtonTestID}
             onPress={onPress}
@@ -78,8 +80,8 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
 }
 
 const $label: TextProps = {
-  mt: 's4',
   semiBold: true,
+  marginTop: 's4',
   preset: 'paragraphCaption',
 };
 
@@ -87,11 +89,10 @@ const $itemWrapper: TouchableOpacityBoxProps = {
   activeOpacity: 1,
   alignItems: 'center',
   accessibilityRole: 'button',
-  accessibilityState: {selected: true},
 };
 
 const $boxWrapper: BoxProps = {
-  flexDirection: 'row',
-  backgroundColor: 'background',
   paddingTop: 's12',
+  backgroundColor: 'background',
+  flexDirection: 'row',
 };
