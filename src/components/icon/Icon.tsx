@@ -36,16 +36,19 @@ import {TrashIcon} from '../../assets/icons/TrashIcon';
 export interface IconBase {
   size?: number;
   color?: string;
+  fillColor?: string;
 }
 export interface IconProps {
   name: IconName;
   color?: ThemeColors;
+  fillColor?: ThemeColors;
   size?: number;
   onPress?: () => void;
 }
 export function Icon({
   name,
   color = 'backgroundContrast',
+  fillColor = 'background',
   size,
   onPress,
 }: IconProps) {
@@ -55,12 +58,18 @@ export function Icon({
   if (onPress) {
     return (
       <Pressable hitSlop={10} onPress={onPress}>
-        <SVGIcon color={colors[color]} size={size} />
+        <SVGIcon
+          color={colors[color]}
+          size={size}
+          fillColor={colors[fillColor]}
+        />
       </Pressable>
     );
   }
 
-  return <SVGIcon color={colors[color]} size={size} />;
+  return (
+    <SVGIcon color={colors[color]} size={size} fillColor={colors[fillColor]} />
+  );
 }
 const iconRegistry = {
   arrowLeft: ArrowLeftIcon,
