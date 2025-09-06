@@ -2,6 +2,7 @@ import React from 'react';
 import {Alert, Pressable} from 'react-native';
 
 import {PostComment, postCommentService, usePostCommentRemove} from '@domain';
+import {useToast} from '@services';
 
 import {Box, ProfileAvatar, Text} from '@components';
 
@@ -23,7 +24,13 @@ export function PostCommentItem({
     postAuthorId,
   );
 
-  const {mutate} = usePostCommentRemove({onSuccess: onRemoveComment});
+  const {showToast} = useToast();
+  const {mutate} = usePostCommentRemove({
+    onSuccess: () => {
+      onRemoveComment();
+      showToast({message: 'Comentário deletado'});
+    },
+  });
 
   function confirmRemove() {
     Alert.alert('Deseja excluir o comentário?', 'pressione confirmar', [
